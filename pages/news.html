@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الأخبار والمقالات - الطاقة المتجددة في مصر</title>
+      <!-- روابط الأيقونة -->
+      <link rel="icon" type="image/png" href="../assets/images/Designer-Photoroom.png">
+      <link rel="shortcut icon" type="image/png" href="../assets/images/Designer-Photoroom.png">
+      
+      <!-- روابط PWA -->
+      <link rel="manifest" href="../manifest.json">
+      <link rel="apple-touch-icon" href="../assets/images/Designer-Photoroom.png">
+      
+    <!-- تحميل الخط أولاً -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- ثم ملفات CSS بالترتيب -->
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/news.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="news-page">
+    <header class="main-header">
+        <div class="container">
+            <button class="menu-toggle" aria-label="القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo-container">
+                <img src="../assets/images/Designer-Photoroom.png" alt="شعار الطاقة المتجددة" class="logo">
+                <h1>الطاقة المتجددة في مصر</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../">الرئيسية</a></li>
+                    <li><a href="projects.html">المشروعات</a></li>
+                    <li><a href="statistics.html">الإحصائيات</a></li>
+                    <li><a href="news.html" class="active">الأخبار والمقالات</a></li>
+                    <li><a href="about.html">عنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="news-page">
+        <div class="container">
+            <!-- قسم البحث -->
+            <div class="search-section">
+                <div class="search-container">
+                    <div class="search-top">
+                        <div class="search-wrapper">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="search-input" placeholder="ابحث في الأخبار والمقالات...">
+                        </div>
+                    </div>
+                    <div class="advanced-filters">
+                        <button class="filter-tag active" data-filter="all">الكل</button>
+                        <button class="filter-tag" data-filter="latest">الأحدث أولا</button>
+                        <button class="filter-tag" data-filter="solar">الطاقة الشمسية</button>
+                        <button class="filter-tag" data-filter="wind">طاقة الرياح</button>
+                        <button class="filter-tag" data-filter="hydro">الطاقة المائية</button>
+                        <button class="filter-tag" data-filter="research">أبحاث وتطوير</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="news-grid">
+                ${newsData.map(item => `
+                    <article class="news-card">
+                        <img src="${item.image}" alt="${item.title}" class="news-image">
+                        <div class="news-content">
+                            <span class="news-date">${formatDate(item.date)}</span>
+                            <h3 class="news-title">${item.title}</h3>
+                            <p class="news-excerpt">${item.excerpt}</p>
+                            <a href="article.html?id=${item.id}" class="read-more">
+                                اقرأ المزيد <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </article>
+                `).join('')}
+            </div>
+        </div>
+    </main>
+
+    <!-- زر تبديل الوضع -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="تبديل الوضع الداكن">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- زر العودة للأعلى -->
+    <button class="scroll-to-top" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../scripts/theme.js"></script>
+    <script src="../scripts/navigation.js"></script>
+    <script src="../scripts/news.js"></script>
+    <script src="../scripts/effects.js"></script>
+</body>
+</html> 

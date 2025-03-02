@@ -1,0 +1,119 @@
+{
+  "overview": {
+    "total_capacity": {
+      "value": 6.48,
+      "unit": "جيجاوات",
+      "growth": 12.5,
+      "description": "إجمالي القدرة المركبة للطاقة المتجددة (6.48 جيجاوات)"
+    },
+    "carbon_reduction": {
+      "value": 1.8,
+      "unit": "مليون طن",
+      "growth": 12.5,
+      "description": "خفض انبعاثات الكربون سنوياً (1.8 مليون طن)"
+    },
+    "investments": {
+      "value": 48.5,
+      "unit": "مليار دولار",
+      "growth": 18.7,
+      "description": "حجم الاستثمارات الإجمالية في قطاع الطاقة المتجددة"
+    },
+    "jobs": {
+      "value": 45000,
+      "unit": "وظيفة",
+      "growth": 22.4,
+      "description": "عدد فرص العمل في قطاع الطاقة المتجددة"
+    }
+  },
+  "energy_sources": {
+    "solar": {
+      "capacity": 2.8,
+      "projects": 42,
+      "efficiency": 22.5,
+      "locations": ["أسوان", "بنبان", "الغردقة", "الزعفرانة"],
+      "monthly_production": [280, 295, 310, 320, 335, 350, 345, 340, 325, 310, 290, 285],
+      "description": "مشروعات الطاقة الشمسية ذات القدرة الإجمالية 2.8 جيجاوات مع كفاءة 22.5%، تشمل مواقع مثل بنبان وأماكن أخرى"
+    },
+    "wind": {
+      "capacity": 1.9,
+      "projects": 28,
+      "efficiency": 38.2,
+      "locations": ["رأس غارب", "الزعفرانة", "جبل الزيت"],
+      "monthly_production": [180, 195, 185, 175, 170, 165, 160, 170, 180, 190, 185, 175],
+      "description": "مشروعات طاقة الرياح ذات القدرة الإجمالية 1.9 جيجاوات مع كفاءة 38.2%، في مواقع استراتيجية مثل جبل الزيت"
+    },
+    "hydro": {
+      "capacity": 1.5,
+      "projects": 15,
+      "efficiency": 85.4,
+      "locations": ["السد العالي", "أسوان", "نجع حمادي"],
+      "monthly_production": [150, 145, 140, 135, 130, 125, 120, 125, 130, 140, 145, 150],
+      "description": "مشروعات الطاقة الكهرومائية ذات القدرة الإجمالية 1.5 جيجاوات مع كفاءة عالية تبلغ 85.4%"
+    },
+    "biomass": {
+      "capacity": 0.28,
+      "projects": 8,
+      "efficiency": 28.3,
+      "locations": ["الدقهلية", "كفر الشيخ", "الشرقية"],
+      "monthly_production": [25, 26, 28, 27, 25, 24, 23, 25, 26, 27, 26, 25],
+      "description": "مشروعات الكتلة الحيوية ذات القدرة الإجمالية 0.28 جيجاوات مع كفاءة 28.3%"
+    }
+  },
+  "yearly_progress": [
+    {
+      "year": 2019,
+      "total_capacity": 4.2,
+      "investments": 5.8,
+      "projects_count": 45,
+      "description": "تسجيل أولى مشروعات الطاقة المتجددة مع قدرة 4.2 جيجاوات"
+    },
+    {
+      "year": 2020,
+      "total_capacity": 4.8,
+      "investments": 6.5,
+      "projects_count": 58,
+      "description": "توسع وتطوير مشروعات جديدة بقدرة 4.8 جيجاوات"
+    },
+    {
+      "year": 2021,
+      "total_capacity": 5.4,
+      "investments": 7.2,
+      "projects_count": 72,
+      "description": "زيادة في القدرة السنوية لتصل إلى 5.4 جيجاوات مع تحسين الأداء"
+    },
+    {
+      "year": 2022,
+      "total_capacity": 5.9,
+      "investments": 7.8,
+      "projects_count": 85,
+      "description": "تقدم ملحوظ في مشروعات الطاقة المتجددة بقدرة 5.9 جيجاوات"
+    },
+    {
+      "year": 2023,
+      "total_capacity": 6.48,
+      "investments": 8.5,
+      "projects_count": 93,
+      "description": "الوصول إلى القدرة المركبة 6.48 جيجاوات مع استثمارات سنوية تبلغ 8.5 مليار دولار"
+    }
+  ],
+  "future_targets": {
+    "2025": {
+      "renewable_percentage": 25,
+      "total_capacity": 15,
+      "investments": 8,
+      "description": "الهدف لعام 2025 تحقيق 15 جيجاوات بنسبة تجديد 25% مع استثمارات بقيمة 8 مليار دولار"
+    },
+    "2030": {
+      "renewable_percentage": 35,
+      "total_capacity": 30,
+      "investments": 20,
+      "description": "الاستراتيجية الوطنية لعام 2030 تستهدف 30 جيجاوات بنسبة 35% واستثمارات تصل إلى 20 مليار دولار"
+    },
+    "2035": {
+      "renewable_percentage": 42,
+      "total_capacity": 60,
+      "investments": 40,
+      "description": "رؤية 2035 تهدف إلى 60 جيجاوات بنسبة تجديد 42% واستثمارات بقيمة 40 مليار دولار"
+    }
+  }
+}

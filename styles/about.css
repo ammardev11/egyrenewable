@@ -1,0 +1,321 @@
+/* Vertical scrollbar */
+::-webkit-scrollbar {
+    width: 6px; /* Width of the vertical scrollbar */
+  }
+  
+  /* Track (background) */
+  ::-webkit-scrollbar-track {
+    background: var(--gradient-background); /* Track color */
+    border-radius: 6px; /* Rounded corners */
+  }
+  
+  /* Thumb (draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary); /* Thumb color */
+    border-radius: 6px; /* Rounded corners */
+    border: 1px solid var(--gradient-background); /* Creates padding around the thumb */
+  }
+  
+  /* Hover effect */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color); /* Darker color on hover */
+  }
+.about-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.about-content {
+    display: grid;
+    gap: var(--spacing-xl);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.about-card {
+    background: var(--surface-color);
+    border-radius: 20px;
+    padding: var(--spacing-xl);
+    box-shadow: var(--card-shadow);
+    transition: all 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.about-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+}
+
+.about-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+}
+
+.team-section {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+}
+
+.team-members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    justify-content: center;
+}
+
+.team-member {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: 15px;
+    background: var(--gradient-background);
+    transition: all 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow);
+}
+
+.team-member .social-btn.github {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.team-member .social-btn.github i {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.member-info {
+    text-align: right;
+    flex-grow: 1;
+}
+
+.member-name {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.member-role {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--surface-color);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.social-btn.facebook {
+    background: linear-gradient(45deg, #1877F2, #3b5998);
+}
+
+.social-btn.maps {
+    background: linear-gradient(45deg, #4285F4, #34A853);
+}
+
+.social-btn.ide {
+    background: linear-gradient(45deg, #333, #666);
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--shadow-color);
+}
+.social-btn.github {
+    background: linear-gradient(45deg, #333, #666);
+}
+
+@media (max-width: 768px) {
+    .about-page {
+        padding-top: 30px !important;
+        margin-top: 0 !important;
+    }
+    
+    .about-header {
+        margin-top: 10px !important;
+        padding-top: 5px !important;
+    }
+
+    .about-container {
+        margin-top: 0;
+        padding: 15px;
+    }
+
+    .about-header h1 {
+        font-size: 1.7rem;
+        margin-bottom: 10px;
+    }
+
+    .about-content {
+        margin-top: 15px !important;
+        gap: 10px;
+    }
+
+    .about-section {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .about-section h2 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    .team-grid {
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .about-card {
+        padding: 15px;
+        margin-bottom: 10px;
+    }
+
+    .about-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
+
+    .team-section {
+        margin-top: 15px !important;
+    }
+
+    .team-members {
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .social-btn {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .team-member {
+        margin-bottom: 10px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-page {
+        padding-top: 40px !important;
+    }
+
+    .about-container {
+        padding: 10px;
+    }
+
+    .about-header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 8px;
+    }
+
+    .about-content {
+        gap: 12px;
+    }
+
+    .about-section {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    .about-section h2 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+
+    .about-card {
+        padding: 12px;
+        margin-bottom: 8px;
+    }
+
+    .about-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+
+    .team-members {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 8px;
+    }
+
+    .member-name {
+        font-size: 1rem;
+    }
+
+    .member-role {
+        font-size: 0.85rem;
+    }
+
+    .social-btn {
+        max-width: 250px;
+        padding: 6px;
+        font-size: 0.8rem;
+    }
+}
+
+.about-page {
+    padding-top: 35px;
+    min-height: 100vh;
+}
+
+[data-theme="dark"] 
+    body {
+        background: var(--background-color);
+        min-height: 100vh;
+    }

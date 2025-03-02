@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- روابط الأيقونة -->
+      <link rel="icon" type="image/png" href="../assets/images/Designer-Photoroom.png">
+      <link rel="shortcut icon" type="image/png" href="../assets/images/Designer-Photoroom.png">
+      
+      <!-- روابط PWA -->
+      <link rel="manifest" href="../manifest.json">
+      <link rel="apple-touch-icon" href="../assets/images/Designer-Photoroom.png">
+      
+    <title>عنا - الطاقة المتجددة في مصر</title>
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <button class="menu-toggle" aria-label="القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo-container">
+                <img src="../assets/images/Designer-Photoroom.png" alt="شعار الطاقة المتجددة" class="logo">
+                <h1>الطاقة المتجددة في مصر</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../">الرئيسية</a></li>
+                    <li><a href="projects.html">المشروعات</a></li>
+                    <li><a href="statistics.html">الإحصائيات</a></li>
+                    <li><a href="news.html">الأخبار والمقالات</a></li>
+                    <li><a href="about.html" class="active">عنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- زر تبديل الوضع خارج الهيدر -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="تبديل الوضع الداكن">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <main class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-card vision">
+                    <h3></h3>
+                    <p></p>
+                </div>
+
+                <div class="about-card mission">
+                    <h3></h3>
+                    <p></p>
+                </div>
+
+                <div class="about-card project">
+                    <h3></h3>
+                    <p></p>
+                </div>
+
+                <div class="about-card team">
+                    <h3></h3>
+                    <div class="team-section">
+                        <div class="team-members">
+                            <!-- سيتم ملؤها بواسطة JavaScript -->
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="#" target="_blank" class="social-btn facebook">
+                                <i class="fab fa-facebook-f"></i>
+                                صفحة المدرسة
+                            </a>
+                            <a href="#" target="_blank" class="social-btn maps">
+                                <i class="fas fa-map-marker-alt"></i>
+                                موقع المدرسة
+                            </a>
+                            <a href="#" target="_blank" class="social-btn ide">
+                                <i class="fas fa-code"></i>
+                                بيئة التطوير
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button class="scroll-to-top" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../scripts/theme.js"></script>
+    <script src="../scripts/navigation.js"></script>
+    <script src="../scripts/about.js"></script>
+    <script src="../scripts/effects.js"></script>
+</body>
+</html> 

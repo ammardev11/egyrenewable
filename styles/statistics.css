@@ -1,0 +1,509 @@
+/* تعديل الخلفية للصفحة بالكامل */
+body {
+    background: var(--background-color);
+    min-height: 100vh;
+}
+
+.statistics-page {
+    padding-top: 35px;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    background: var(--background-color);
+}
+
+.statistics-page .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 var(--spacing-md);
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.statistics-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl) 0;
+    background: var(--gradient-background);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.statistics-header h1 {
+    font-size: 2.2rem;
+    color: var(--text-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.statistics-header p {
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+/* أقسام الإحصائيات */
+.stats-section {
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    background: var(--surface-color);
+    border-radius: 20px;
+    box-shadow: var(--card-shadow);
+}
+
+.stats-section h2 {
+    color: var(--primary-color);
+    font-size: 1.8rem;
+    margin-bottom: var(--spacing-lg);
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+}
+
+.stats-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+}
+
+/* نظرة عامة */
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+
+.stat-card {
+    background: var(--gradient-background);
+    padding: var(--spacing-lg);
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.stat-unit {
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.stat-growth {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin: var(--spacing-sm) 0;
+}
+
+.stat-growth.positive {
+    background: rgba(46, 213, 115, 0.1);
+    color: #2ed573;
+}
+
+.stat-description {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+/* مصادر الطاقة */
+.sources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xl);
+}
+
+.chart-container {
+    background: #FFFFFF;
+    padding: var(--spacing-md);
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    min-height: 300px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.chart-container.large {
+    min-height: 450px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+/* التقدم السنوي */
+.progress-container {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+}
+
+.progress-table {
+    background: var(--surface-color);
+    padding: var(--spacing-md);
+    border-radius: 15px;
+    box-shadow: var(--card-shadow);
+    overflow-x: auto; /* يتيح التمرير الأفقي على الشاشات الصغيرة */
+    width: 100%;
+}
+
+.progress-table table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.progress-table th,
+.progress-table td {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    text-align: center;
+    border-bottom: 1px solid var(--shadow-color);
+}
+
+.progress-table th {
+    color: var(--text-color);
+    font-weight: 600;
+    background: var(--gradient-background);
+}
+
+.progress-table td {
+    color: var(--text-color);
+}
+
+/* المستهدفات */
+.targets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.target-card {
+    background: var(--gradient-background);
+    padding: var(--spacing-xl);
+    border-radius: 15px;
+    text-align: center;
+}
+
+.target-year {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-md);
+}
+
+/* التجاوب */
+@media (max-width: 1200px) {
+    .progress-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-table {
+        order: 2;
+    }
+    
+    .chart-container {
+        order: 1;
+    }
+    
+    .sources-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .statistics-page {
+        padding-top: 30px !important;
+        margin-top: 0 !important;
+    }
+
+    .statistics-page .container {
+        margin-bottom: var(--spacing-lg);
+        padding: 0 var(--spacing-sm);
+    }
+
+    .statistics-header {
+        margin-top: 10px !important;
+        padding-top: 5px !important;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .statistics-content {
+        margin-top: 15px !important;
+    }
+    
+    .statistics-charts {
+        margin-top: 15px !important;
+    }
+    
+    .chart-container {
+        margin-bottom: 15px !important;
+    }
+
+    .statistics-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .stats-section {
+        padding: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .stats-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+
+    .stat-value {
+        font-size: 2rem;
+    }
+
+    .progress-table {
+        padding: var(--spacing-sm);
+    }
+    
+    .progress-table table {
+        font-size: 0.8rem;
+    }
+    
+    .progress-table th,
+    .progress-table td {
+        padding: var(--spacing-xs);
+    }
+    
+    .sources-grid {
+        gap: var(--spacing-lg);
+    }
+    
+    .chart-container, 
+    .chart-container.large {
+        padding: var(--spacing-sm);
+        min-height: 250px;
+    }
+    
+    .overview-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+    
+    .targets-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* إضافة قاعدة جديدة للشاشات الصغيرة جدًا - الهواتف الصغيرة */
+@media (max-width: 576px) {
+    .stats-section {
+        padding: var(--spacing-md);
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .stat-description {
+        font-size: 0.85rem;
+    }
+    
+    .chart-container, 
+    .chart-container.large {
+        min-height: 200px;
+    }
+    
+    .target-card {
+        padding: var(--spacing-md);
+    }
+    
+    .target-year {
+        font-size: 1.5rem;
+    }
+    
+    .overview-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .progress-table th,
+    .progress-table td {
+        padding: var(--spacing-xs) calc(var(--spacing-xs) / 2);
+        font-size: 0.75rem;
+    }
+}
+
+.stats-section:last-child {
+    margin-bottom: 0;
+}
+
+/* تنسيق مخطط الإنتاج الشهري */
+.production-section .chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-lg);
+    height: 500px;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.production-section .chart-container canvas {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 auto;
+}
+
+/* تعديل حجم الخط للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .production-section .chart-container {
+        height: 400px;
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 576px) {
+    .production-section .chart-container {
+        height: 300px;
+        padding: var(--spacing-sm);
+    }
+}
+
+/* تعديل ألوان الوضع المظلم */
+[data-theme="dark"] {
+    .stats-section {
+        background: var(--surface-color);
+    }
+    .stats-section {
+        background: var(--surface-color);
+    }
+
+    .stat-card {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .chart-container {
+        background: #FFFFFF;
+    }
+
+    /* تعديل ألوان الجدول */
+    .progress-table {
+        background: var(--surface-color);
+    }
+
+    .progress-table th {
+        background: var(--primary-color);
+        color: white;
+    }
+
+    .progress-table td {
+        color: var(--text-color);
+    }
+
+    .progress-table th,
+    .progress-table td {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    /* تعديل ألوان المخططات */
+    .chart-container {
+        background: #FFFFFF;
+    }
+
+    /* تعديل ألوان النصوص */
+    .stat-value {
+        color: var(--accent-color);
+    }
+
+    .stat-description,
+    .stat-unit {
+        color: var(--text-light);
+    }
+
+    /* تعديل ألوان المستهدفات */
+    .target-card {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .target-year {
+        color: var(--accent-color);
+    }
+
+    /* تعديل ألوان العناوين */
+    .stats-section h2 {
+        color: var(--accent-color);
+    }
+
+    /* تعديل لون النمو الإيجابي */
+    .stat-growth.positive {
+        background: rgba(46, 213, 115, 0.15);
+        color: #4cd137;
+    }
+}
+
+/* تعديل خيارات المخطط في الوضع المظلم */
+[data-theme="dark"] .chart-container canvas {
+    filter: brightness(0.9);
+}
+
+/* تحسين قراءة النصوص */
+.chart-container canvas {
+    font-family: 'Noto Kufi Arabic', sans-serif !important;
+} 
+
+/* تعديل للعناصر المصدر */
+.source-detail {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--gradient-background);
+    border-radius: 10px;
+}
+
+.source-detail:last-child {
+    margin-bottom: 0;
+}
+
+.source-detail h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.2rem;
+}
+
+.source-detail ul {
+    list-style: none;
+    padding: 0;
+}
+
+.source-detail li {
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.9rem;
+}
+
+@media (max-width: 576px) {
+    .source-detail {
+        padding: var(--spacing-sm);
+    }
+    
+    .source-detail h3 {
+        font-size: 1.1rem;
+    }
+    
+    .source-detail li {
+        font-size: 0.85rem;
+    }
+} 

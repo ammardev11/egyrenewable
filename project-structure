@@ -1,0 +1,26 @@
+renewable-energy/
+├── assets/
+│   ├── images/
+│   │   ├── Designer-Photoroom.png
+│   │   ├── hero-image2.png
+│   │   ├── solar-panel.jpg
+│   │   ├── wind-turbine.jpg
+│   │   └── hydro-power.jpg
+│   ├── icons/
+│   │   ├── sun.svg
+│   │   └── moon.svg
+│   └── fonts/
+├── data/
+│   └── content.json
+├── layouts/
+│   └── main-layout.html
+├── pages/
+│   ├── about.html
+│   ├── projects.html
+│   └── news.html
+├── styles/
+│   ├── main.css
+│   └── variables.css
+├── scripts/
+│   └── main.js
+└── index.html 

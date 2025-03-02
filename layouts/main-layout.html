@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{page_title}} - الطاقة المتجددة في مصر</title>
+    <link rel="stylesheet" href="{{base_path}}styles/variables.css">
+    <link rel="stylesheet" href="{{base_path}}styles/main.css">
+    <link rel="stylesheet" href="{{base_path}}styles/{{page_style}}.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <!-- زر القائمة الجانبية للموبايل -->
+            <button class="menu-toggle" aria-label="القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo-container">
+                <img src="{{base_path}}assets/images/Designer-Photoroom.png" alt="شعار الطاقة المتجددة" class="logo">
+                <h1>مصر والطاقة المتجددة</h1>
+            </div>
+            <!-- القائمة الجانبية -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{{base_path}}" {{#if is_home}}class="active"{{/if}}>الرئيسية</a></li>
+                    <li><a href="{{base_path}}pages/news.html" {{#if is_news}}class="active"{{/if}}>الأخبار والمقالات</a></li>
+                    <li><a href="{{base_path}}pages/projects.html" {{#if is_projects}}class="active"{{/if}}>المشروعات</a></li>
+                    <li><a href="{{base_path}}pages/about.html" {{#if is_about}}class="active"{{/if}}>عنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- زر تبديل الوضع خارج الهيدر -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="تبديل الوضع الداكن">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    {{content}}
+
+    <!-- تضمين ملفات JavaScript -->
+    <script src="{{base_path}}scripts/theme.js"></script>
+    <script src="{{base_path}}scripts/navigation.js"></script>
+    <script src="{{base_path}}scripts/main.js"></script>
+</body>
+</html> 

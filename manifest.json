@@ -1,0 +1,29 @@
+{
+    "name": "مشروعات الطاقة المتجددة في مصر",
+    "short_name": "الطاقة المتجددة",
+    "description": "منصة تفاعلية لعرض مشروعات الطاقة المتجددة في مصر والإحصائيات والأخبار المرتبطة بها",
+    "lang": "ar",
+    "dir": "rtl",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#009688",
+    "background_color": "#f7f9fc",
+    "icons": [
+        {
+            "src": "assets/images/Designer-Photoroom.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": ["education", "utilities", "government"],
+    "screenshots": [
+        {
+            "src": "assets/images/screenshot-1.jpg",
+            "sizes": "1280x720",
+            "type": "image/jpeg"
+        }
+    ],
+    "prefer_related_applications": false
+} 

@@ -1,0 +1,93 @@
+/* تعميم الخط على كل العناصر */
+:root {
+    font-family: 'Noto Kufi Arabic', sans-serif;
+}
+
+/* تطبيق الخط على العناصر */
+* {
+    font-family: inherit;
+}
+
+/* تطبيق الخط على العناصر النصية */
+body,
+h1, h2, h3, h4, h5, h6,
+p, span, a, li, div,
+button,
+input,
+textarea,
+select,
+.news-title,
+.news-excerpt,
+.news-date,
+.news-content,
+.filter-tag,
+.page-btn,
+.details-btn {
+    font-family: 'Noto Kufi Arabic', sans-serif !important;
+}
+
+/* تطبيق الخط على placeholder */
+::placeholder {
+    font-family: 'Noto Kufi Arabic', sans-serif !important;
+}
+
+/* استثناء الأيقونات */
+.fa,
+.fas,
+.far,
+.fab,
+.fa-solid,
+[class^="fa-"] {
+    font-family: "Font Awesome 6 Free" !important;
+}
+
+/* تأكيد استثناء الأيقونات في الوضع المحمول */
+@media (max-width: 768px) {
+    body,
+    h1, h2, h3, h4, h5, h6,
+    p, span, a, li, div,
+    button,
+    input,
+    textarea,
+    select,
+    .news-title,
+    .news-excerpt,
+    .news-date,
+    .news-content,
+    .filter-tag,
+    .page-btn,
+    .details-btn {
+        font-family: 'Noto Kufi Arabic', sans-serif !important;
+    }
+
+    .fa,
+    .fas,
+    .far,
+    .fab,
+    .fa-solid,
+    [class^="fa-"] {
+        font-family: "Font Awesome 6 Free" !important;
+    }
+} 
+/* Vertical scrollbar */
+::-webkit-scrollbar {
+    width: 6px; /* Width of the vertical scrollbar */
+  }
+  
+  /* Track (background) */
+  ::-webkit-scrollbar-track {
+    background: var(--gradient-background); /* Track color */
+    border-radius: 6px; /* Rounded corners */
+  }
+  
+  /* Thumb (draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: var(--gradient-primary); /* Thumb color */
+    border-radius: 6px; /* Rounded corners */
+    border: 1px solid var(--gradient-background); /* Creates padding around the thumb */
+  }
+  
+  /* Hover effect */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color); /* Darker color on hover */
+  }

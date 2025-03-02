@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- روابط الأيقونة -->
+      <link rel="icon" type="image/png" href="../assets/images/Designer-Photoroom.png">
+      <link rel="shortcut icon" type="image/png" href="../assets/images/Designer-Photoroom.png">
+      
+      <!-- روابط PWA -->
+      <link rel="manifest" href="../manifest.json">
+      <link rel="apple-touch-icon" href="../assets/images/Designer-Photoroom.png">
+      
+    <title>المشروعات - الطاقة المتجددة في مصر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/variables.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/projects.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preload" href="../data/projects.json" as="fetch" type="application/json" crossorigin>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <button class="menu-toggle" aria-label="القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="logo-container">
+                <img src="../assets/images/Designer-Photoroom.png" alt="شعار الطاقة المتجددة" class="logo">
+                <h1>الطاقة المتجددة في مصر</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../">الرئيسية</a></li>
+                    <li><a href="projects.html" class="active">المشروعات</a></li>
+                    <li><a href="statistics.html">الإحصائيات</a></li>
+                    <li><a href="news.html">الأخبار والمقالات</a></li>
+                    <li><a href="about.html">عنا</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- زر تبديل الوضع خارج الهيدر -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="تبديل الوضع الداكن">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <main class="projects-page">
+        <div class="container">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="ابحث عن مشروع...">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                </button>
+               
+            </div>
+
+            <div class="filters-section">
+                <div class="main-filters">
+                    <button class="filter-btn active" data-category="all">جميع المشروعات</button>
+                    <button class="filter-btn" data-category="طاقة شمسية">الطاقة الشمسية</button>
+                    <button class="filter-btn" data-category="طاقة رياح">طاقة الرياح</button>
+                    <button class="filter-btn" data-category="طاقة نووية">الطاقة النووية</button>
+                    <button class="filter-btn" data-category="طاقة مائية">الطاقة المائية</button>
+                    <button class="filter-btn" data-category="كتلة حيوية">الكتلة الحيوية</button>
+                </div>
+                
+                <div class="advanced-filters">
+                    <div class="filter-group">
+                        <select id="locationFilter">
+                            <option value="">كل المحافظات</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <select id="statusFilter">
+                            <option value="">كل الحالات</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="projectsList">
+                <!-- سيتم ملؤها بواسطة JavaScript -->
+            </div>
+
+            <template id="project-template">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="" alt="">
+                        <div class="project-type"></div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title"></h3>
+                        <div class="project-meta">
+                            <span class="project-year">
+                                <i class="far fa-calendar"></i>
+                                <span></span>
+                            </span>
+                            <span class="project-capacity">
+                                <i class="fas fa-bolt"></i>
+                                <span></span>
+                            </span>
+                            <span class="project-cost">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span></span>
+                            </span>
+                        </div>
+                        <p class="project-description"></p>
+                        <div class="project-progress">
+                            <div class="progress-label">
+                                <span>نسبة الإنجاز</span>
+                                <span class="progress-value"></span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                        </div>
+                        <div class="project-footer">
+                            <div class="project-tags"></div>
+                            <button class="details-btn">عرض التفاصيل</button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </main>
+
+    <button class="scroll-to-top" aria-label="العودة للأعلى">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="../scripts/theme.js"></script>
+    <script src="../scripts/navigation.js"></script>
+    <script src="../scripts/projects.js"></script>
+    <script src="../scripts/effects.js"></script>
+</body>
+</html> 

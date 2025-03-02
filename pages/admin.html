@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم - الإدارة</title>
+    <meta name="description" content="لوحة تحكم إدارية لإدارة موقع الطاقة المتجددة">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/theme/monokai.min.css" rel="stylesheet">
+</head>
+<body class="admin-page">
+    <div class="admin-container">
+        <!-- شاشة تسجيل الدخول -->
+        <div class="login-screen" id="loginScreen">
+            <div class="login-card">
+                <div class="login-header">
+                    <i class="fas fa-solar-panel"></i>
+                    <h1>لوحة التحكم</h1>
+                    <p>الرجاء إدخال بيانات الدخول للوصول إلى لوحة التحكم</p>
+                </div>
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="username"><i class="fas fa-user"></i> اسم المستخدم</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="fas fa-lock"></i> كلمة المرور</label>
+                        <div class="password-container">
+                            <input type="password" id="password" required>
+                            <button type="button" class="toggle-password" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="login-error" id="loginError"></div>
+                    <button type="submit" class="login-btn">
+                        <span>تسجيل الدخول</span>
+                        <i class="fas fa-sign-in-alt"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- لوحة التحكم الرئيسية -->
+        <div class="admin-dashboard" id="adminDashboard" style="display: none;">
+            <header class="admin-header">
+                <div class="logo">
+                    <i class="fas fa-solar-panel"></i>
+                    <h1>لوحة التحكم</h1>
+                </div>
+                <nav class="admin-nav">
+                    <div class="admin-user">
+                        <span id="adminUsername">المدير</span>
+                        <button id="logoutBtn" class="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i>
+                            تسجيل الخروج
+                        </button>
+                    </div>
+                </nav>
+            </header>
+
+            <div class="admin-content">
+                <aside class="admin-sidebar">
+                    <nav class="sidebar-nav">
+                        <button class="nav-item active" data-section="dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <span>لوحة المعلومات</span>
+                        </button>
+                        <button class="nav-item" data-section="json-editor">
+                            <i class="fas fa-edit"></i>
+                            <span>محرر البيانات</span>
+                        </button>
+                        <button class="nav-item" data-section="projects">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>المشاريع</span>
+                        </button>
+                        <button class="nav-item" data-section="news">
+                            <i class="fas fa-newspaper"></i>
+                            <span>الأخبار</span>
+                        </button>
+                        <button class="nav-item" data-section="articles">
+                            <i class="fas fa-file-alt"></i>
+                            <span>المقالات</span>
+                        </button>
+                        <button class="nav-item" data-section="settings">
+                            <i class="fas fa-cog"></i>
+                            <span>الإعدادات</span>
+                        </button>
+                    </nav>
+                </aside>
+
+                <main class="admin-main">
+                    <!-- قسم لوحة المعلومات -->
+                    <section id="dashboard-section" class="admin-section active">
+                        <h2><i class="fas fa-tachometer-alt"></i> لوحة المعلومات</h2>
+                        <div class="dashboard-stats">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-project-diagram"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>المشاريع</h3>
+                                    <p class="stat-value" id="projectCount">0</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-newspaper"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>الأخبار</h3>
+                                    <p class="stat-value" id="newsCount">0</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>المقالات</h3>
+                                    <p class="stat-value" id="articlesCount">0</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>الطاقة الإجمالية</h3>
+                                    <p class="stat-value" id="totalCapacity">0 جيجاوات</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="recent-updates">
+                            <h3><i class="fas fa-history"></i> آخر التحديثات</h3>
+                            <div class="updates-list" id="updatesList">
+                                <!-- ستتم إضافة التحديثات هنا عبر JavaScript -->
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- قسم محرر JSON -->
+                    <section id="json-editor-section" class="admin-section">
+                        <h2><i class="fas fa-edit"></i> محرر البيانات</h2>
+                        <div class="editor-controls">
+                            <div class="file-selector">
+                                <label for="fileSelect">اختر ملف البيانات:</label>
+                                <select id="fileSelect">
+                                    <option value="projects.json">المشاريع (projects.json)</option>
+                                    <option value="news.json">الأخبار (news.json)</option>
+                                    <option value="content.json">المحتوى (content.json)</option>
+                                    <option value="statistics.json">الإحصائيات (statistics.json)</option>
+                                </select>
+                            </div>
+                            <div class="editor-buttons">
+                                <button id="validateBtn" class="action-btn">
+                                    <i class="fas fa-check-circle"></i>
+                                    التحقق من البيانات
+                                </button>
+                                <button id="saveFileBtn" class="action-btn primary">
+                                    <i class="fas fa-save"></i>
+                                    حفظ التغييرات
+                                </button>
+                            </div>
+                        </div>
+                        <div class="editor-container">
+                            <div id="jsonEditor"></div>
+                        </div>
+                        <div class="editor-status" id="editorStatus"></div>
+                    </section>
+
+                    <!-- قسم إدارة المشاريع -->
+                    <section id="projects-section" class="admin-section">
+                        <h2><i class="fas fa-project-diagram"></i> إدارة المشاريع</h2>
+                        <div class="section-controls">
+                            <button id="addProjectBtn" class="action-btn primary">
+                                <i class="fas fa-plus"></i>
+                                إضافة مشروع جديد
+                            </button>
+                        </div>
+                        <div class="admin-table-container">
+                            <table class="admin-table" id="projectsTable">
+                                <thead>
+                                    <tr>
+                                        <th>المعرف</th>
+                                        <th>العنوان</th>
+                                        <th>الفئة</th>
+                                        <th>الموقع</th>
+                                        <th>الحالة</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم إضافة الصفوف هنا عبر JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- قسم إدارة الأخبار -->
+                    <section id="news-section" class="admin-section">
+                        <h2><i class="fas fa-newspaper"></i> إدارة الأخبار</h2>
+                        <div class="section-controls">
+                            <button id="addNewsBtn" class="action-btn primary">
+                                <i class="fas fa-plus"></i>
+                                إضافة خبر جديد
+                            </button>
+                        </div>
+                        <div class="admin-table-container">
+                            <table class="admin-table" id="newsTable">
+                                <thead>
+                                    <tr>
+                                        <th>المعرف</th>
+                                        <th>العنوان</th>
+                                        <th>التاريخ</th>
+                                        <th>التصنيفات</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم إضافة الصفوف هنا عبر JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- قسم إدارة المقالات -->
+                    <section id="articles-section" class="admin-section">
+                        <h2><i class="fas fa-file-alt"></i> إدارة المقالات</h2>
+                        <div class="section-controls">
+                            <button id="addArticleBtn" class="action-btn primary">
+                                <i class="fas fa-plus"></i>
+                                إضافة مقال جديد
+                            </button>
+                        </div>
+                        <div class="admin-table-container">
+                            <table class="admin-table" id="articlesTable">
+                                <thead>
+                                    <tr>
+                                        <th>المعرف</th>
+                                        <th>العنوان</th>
+                                        <th>التاريخ</th>
+                                        <th>الكاتب</th>
+                                        <th>الإجراءات</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- ستتم إضافة الصفوف هنا عبر JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- قسم الإعدادات -->
+                    <section id="settings-section" class="admin-section">
+                        <h2><i class="fas fa-cog"></i> إعدادات النظام</h2>
+                        <div class="settings-card">
+                            <h3><i class="fas fa-user-shield"></i> إعدادات الأمان</h3>
+                            <form id="securityForm" class="settings-form">
+                                <div class="form-group">
+                                    <label for="currentPassword">كلمة المرور الحالية</label>
+                                    <input type="password" id="currentPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="newPassword">كلمة المرور الجديدة</label>
+                                    <input type="password" id="newPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirmPassword">تأكيد كلمة المرور</label>
+                                    <input type="password" id="confirmPassword" required>
+                                </div>
+                                <button type="submit" class="action-btn primary">
+                                    <i class="fas fa-save"></i>
+                                    تحديث كلمة المرور
+                                </button>
+                            </form>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <!-- نماذج منبثقة -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="projectModalTitle">إضافة مشروع جديد</h3>
+                <button class="close-modal" data-modal="projectModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="projectForm" class="admin-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="projectId">معرف المشروع</label>
+                            <input type="text" id="projectId" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectTitle">عنوان المشروع</label>
+                            <input type="text" id="projectTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectCategory">الفئة</label>
+                            <select id="projectCategory" multiple required>
+                                <option value="طاقة شمسية">طاقة شمسية</option>
+                                <option value="طاقة رياح">طاقة رياح</option>
+                                <option value="طاقة مائية">طاقة مائية</option>
+                                <option value="طاقة حيوية">طاقة حيوية</option>
+                                <option value="طاقة نووية">طاقة نووية</option>
+                            </select>
+                            <small>يمكنك اختيار أكثر من فئة باستخدام Ctrl+نقر</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectLocation">الموقع</label>
+                            <input type="text" id="projectLocation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectStatus">الحالة</label>
+                            <select id="projectStatus" required>
+                                <option value="مكتمل">مكتمل</option>
+                                <option value="جاري التنفيذ">جاري التنفيذ</option>
+                                <option value="مخطط له">مخطط له</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectBudget">الميزانية</label>
+                            <input type="text" id="projectBudget" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectStartDate">تاريخ البدء</label>
+                            <input type="text" id="projectStartDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectEndDate">تاريخ الانتهاء</label>
+                            <input type="text" id="projectEndDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="projectCapacity">القدرة</label>
+                            <input type="text" id="projectCapacity" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="projectImage">رابط الصورة</label>
+                            <input type="text" id="projectImage" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="projectDescription">الوصف</label>
+                            <textarea id="projectDescription" rows="3" required></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="projectProgress">نسبة التقدم (%)</label>
+                            <input type="range" id="projectProgress" min="0" max="100" value="0">
+                            <div class="range-value"><span id="progressValue">0</span>%</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>تفاصيل إضافية</label>
+                        <div id="projectDetailsEditor" class="json-form-editor"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="action-btn" data-dismiss="projectModal">
+                            إلغاء
+                        </button>
+                        <button type="submit" class="action-btn primary">
+                            <i class="fas fa-save"></i>
+                            حفظ المشروع
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="newsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="newsModalTitle">إضافة خبر جديد</h3>
+                <button class="close-modal" data-modal="newsModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="newsForm" class="admin-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="newsId">معرف الخبر</label>
+                            <input type="text" id="newsId" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="newsTitle">عنوان الخبر</label>
+                            <input type="text" id="newsTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newsDate">التاريخ</label>
+                            <input type="date" id="newsDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newsCategories">التصنيفات</label>
+                            <select id="newsCategories" multiple required>
+                                <option value="solar">طاقة شمسية</option>
+                                <option value="wind">طاقة رياح</option>
+                                <option value="hydro">طاقة مائية</option>
+                                <option value="bio">طاقة حيوية</option>
+                                <option value="nuclear">طاقة نووية</option>
+                                <option value="research">أبحاث</option>
+                                <option value="policy">سياسات</option>
+                            </select>
+                            <small>يمكنك اختيار أكثر من تصنيف باستخدام Ctrl+نقر</small>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="newsImage">رابط الصورة</label>
+                            <input type="text" id="newsImage" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="newsExcerpt">ملخص الخبر</label>
+                            <textarea id="newsExcerpt" rows="2" required></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="newsContent">محتوى الخبر</label>
+                            <textarea id="newsContent" rows="6" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="action-btn" data-dismiss="newsModal">
+                            إلغاء
+                        </button>
+                        <button type="submit" class="action-btn primary">
+                            <i class="fas fa-save"></i>
+                            حفظ الخبر
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="articleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="articleModalTitle">إضافة مقال جديد</h3>
+                <button class="close-modal" data-modal="articleModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="articleForm" class="admin-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="articleId">معرف المقال</label>
+                            <input type="text" id="articleId" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="articleTitle">عنوان المقال</label>
+                            <input type="text" id="articleTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="articleDate">التاريخ</label>
+                            <input type="date" id="articleDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="articleAuthor">الكاتب</label>
+                            <input type="text" id="articleAuthor" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="articleCategories">التصنيفات</label>
+                            <select id="articleCategories" multiple required>
+                                <option value="solar">طاقة شمسية</option>
+                                <option value="wind">طاقة رياح</option>
+                                <option value="hydro">طاقة مائية</option>
+                                <option value="bio">طاقة حيوية</option>
+                                <option value="nuclear">طاقة نووية</option>
+                                <option value="research">أبحاث</option>
+                                <option value="policy">سياسات</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="articleImage">رابط الصورة</label>
+                            <input type="text" id="articleImage" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="articleSummary">ملخص المقال</label>
+                            <textarea id="articleSummary" rows="2" required></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="articleContent">محتوى المقال</label>
+                        <div class="rich-editor-tools">
+                            <button type="button" data-command="bold"><i class="fas fa-bold"></i></button>
+                            <button type="button" data-command="italic"><i class="fas fa-italic"></i></button>
+                            <button type="button" data-command="underline"><i class="fas fa-underline"></i></button>
+                            <button type="button" data-command="insertHeading"><i class="fas fa-heading"></i></button>
+                            <button type="button" data-command="insertParagraph"><i class="fas fa-paragraph"></i></button>
+                            <button type="button" data-command="insertImage"><i class="fas fa-image"></i></button>
+                            <button type="button" data-command="insertVideo"><i class="fas fa-video"></i></button>
+                            <button type="button" data-command="createLink"><i class="fas fa-link"></i></button>
+                        </div>
+                        <div id="articleEditor" class="rich-editor-content" contenteditable="true"></div>
+                        <textarea id="articleContent" style="display: none;"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="action-btn" data-dismiss="articleModal">
+                            إلغاء
+                        </button>
+                        <button type="submit" class="action-btn primary">
+                            <i class="fas fa-save"></i>
+                            حفظ المقال
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة التأكيد -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content modal-sm">
+            <div class="modal-header">
+                <h3 id="confirmTitle">تأكيد العملية</h3>
+                <button class="close-modal" data-modal="confirmModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmMessage">هل أنت متأكد من رغبتك في إتمام هذه العملية؟</p>
+                <div class="form-actions">
+                    <button type="button" class="action-btn" id="cancelConfirm">
+                        إلغاء
+                    </button>
+                    <button type="button" class="action-btn danger" id="confirmAction">
+                        <i class="fas fa-check"></i>
+                        تأكيد
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الإشعارات -->
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <i id="notificationIcon" class="fas fa-info-circle"></i>
+            <span id="notificationMessage"></span>
+        </div>
+        <button class="close-notification">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- المكتبات المساعدة -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/lint/lint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/lint/json-lint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsonlint/1.6.0/jsonlint.min.js"></script>
+    <script src="../scripts/admin.js"></script>
+</body>
+</html> 
